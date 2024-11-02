@@ -18,13 +18,14 @@ func main() {
 	}
 
 	// cara 3: for ditulis tanpa kondisi. Pemberhentian perulangan dilakukan dengan menggunakan keyword break
-	// for {
-	// 	fmt.Println("Angka", i)
-	// 	i++
-	// 	if i == 5 {
-	// 		break
-	// 	}
-	// }
+	var j = 0
+	for {
+		fmt.Println("Angka", j)
+		j++
+		if j == 5 {
+			break
+		}
+	}
 
 	// cara 4: menggunakan kombinasi keyword for dan range. digunakan untuk me-looping data gabungan (string, array, slice, map)
 	var xs = "123" // string
@@ -55,5 +56,40 @@ func main() {
 	// selain itu, bisa juga dengan cukup menentukan nilai numerik perulangan
 	for i := range 5 {
 		fmt.Print(i) //01234
+	}
+
+	// penggunaan keyword break & Continue
+	for i := 1; i <= 10; i++ {
+		// ketika kondisi terpenuhi, dipaksa lanjut ke perulangan selanjutnya
+		if i%2 == 1 {
+			continue
+		}
+
+		// ketika i melebihi 8, perulangan berhenti
+		if i > 8 {
+			break
+		}
+
+		fmt.Println("Angka", i)
+	}
+
+	// perulangan bersarang (nested loops)
+	for i := 0; i < 5; i++ {
+		for j := i; j < 5; j++ {
+			fmt.Print(j, "")
+		}
+
+		fmt.Println()
+	}
+
+	// pemanfaatan label dalam perulangan
+outerLoop:
+	for i := 0; i < 5; i++ {
+		for j := 0; j < 5; j++ {
+			if i == 3 {
+				break outerLoop
+			}
+			fmt.Print("matriks [", i, "][", j, "]", "\n")
+		}
 	}
 }
